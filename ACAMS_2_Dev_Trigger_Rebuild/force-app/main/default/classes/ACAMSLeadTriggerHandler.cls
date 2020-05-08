@@ -28,10 +28,9 @@ public class ACAMSLeadTriggerHandler extends CCAviTriggerHandler{
     private void reassignLeadAfterUpdate(){
         Set<Id> leadSetIdsToReassign = new Set<Id>();
         for (Lead l : newList) {
-            //if (Trigger.oldMap.get(l.Id).Reassign__c != l.Reassign__c && l.Reassign__c) {
-            //    leadSetIdsToReassign.add(l.Id);
-
-            //}
+            if (oldMap.get(l.Id).Reassign__c != l.Reassign__c && l.Reassign__c) {
+                leadSetIdsToReassign.add(l.Id);
+            }
         }
 
         if (leadSetIdsToReassign != null && leadSetIdsToReassign.size() > 0) {
