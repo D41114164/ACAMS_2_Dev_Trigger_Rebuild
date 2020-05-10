@@ -5,12 +5,16 @@
 # Salesforce cache
 .sfdx/
 .localdevserver/
+.vscode/
 
+# apex class trigger .xml
+
+ACAMS_2_Dev_Trigger_Rebuild/manifest/package.xml
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
 
 # LWC Jest coverage reports
-coverage/
+coverage/*
 
 # Logs
 logs
@@ -33,3 +37,5 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+

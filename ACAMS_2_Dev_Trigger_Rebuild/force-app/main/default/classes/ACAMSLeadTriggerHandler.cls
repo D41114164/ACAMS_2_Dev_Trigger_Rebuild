@@ -19,7 +19,7 @@ public class ACAMSLeadTriggerHandler extends CCAviTriggerHandler{
      *  method execute after update
      */
     protected override void afterUpdate() {
-
+        reassignLeadAfterUpdate();
     }
 
     /***
@@ -52,7 +52,6 @@ public class ACAMSLeadTriggerHandler extends CCAviTriggerHandler{
         }
 
         List<AssignmentRule> arList = [select id from AssignmentRule where SobjectType = 'Lead' and Active = true limit 1];
-
         if(arList != null && arList.size() > 0){
             for (Lead lead : leadsToProcessMap.values()) {
                 Database.DMLOptions dmo = new Database.DMLOptions();
