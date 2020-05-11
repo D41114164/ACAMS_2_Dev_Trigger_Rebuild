@@ -19,7 +19,7 @@ public class ACAMSLeadTriggerHandler extends CCAviTriggerHandler{
      *  method execute after update
      */
     protected override void afterUpdate() {
-
+        reassignLeadAfterUpdate();
     }
 
     /***
@@ -28,10 +28,9 @@ public class ACAMSLeadTriggerHandler extends CCAviTriggerHandler{
     private void reassignLeadAfterUpdate(){
         Set<Id> leadSetIdsToReassign = new Set<Id>();
         for (Lead l : newList) {
-            //if (Trigger.oldMap.get(l.Id).Reassign__c != l.Reassign__c && l.Reassign__c) {
-            //    leadSetIdsToReassign.add(l.Id);
-
-            //}
+            if (oldMap.get(l.Id).Reassign__c != l.Reassign__c && l.Reassign__c) {
+                leadSetIdsToReassign.add(l.Id);
+            }
         }
 
         if (leadSetIdsToReassign != null && leadSetIdsToReassign.size() > 0) {
@@ -53,7 +52,6 @@ public class ACAMSLeadTriggerHandler extends CCAviTriggerHandler{
         }
 
         List<AssignmentRule> arList = [select id from AssignmentRule where SobjectType = 'Lead' and Active = true limit 1];
-
         if(arList != null && arList.size() > 0){
             for (Lead lead : leadsToProcessMap.values()) {
                 Database.DMLOptions dmo = new Database.DMLOptions();
