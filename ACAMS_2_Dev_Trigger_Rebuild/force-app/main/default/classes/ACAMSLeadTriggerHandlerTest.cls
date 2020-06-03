@@ -1,9 +1,10 @@
+//change the code
 @IsTest
 public class ACAMSLeadTriggerHandlerTest {
     @IsTest
     public static  void createLeadWithReassign(){
         List<Lead> leadList = new List<Lead>{
-            new Lead(Status='New',LastName='TestLast',Company='test company',Reassign__c=false)
+            new Lead(Status='New',LastName='TestLast',Company='test company',Reassign__c=false,Country='US')
         };
         insert leadList;
         
@@ -13,4 +14,5 @@ public class ACAMSLeadTriggerHandlerTest {
         update leadList;
         System.assertEquals(true, leadList[0].Reassign__c);
     }
+
 }
