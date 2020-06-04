@@ -4,7 +4,7 @@ public class ACAMSLeadTriggerHandlerTest {
     @IsTest
     public static  void createLeadWithReassign(){
         List<Lead> leadList = new List<Lead>{
-            new Lead(Status='New',LastName='TestLast',Company='test company',Reassign__c=false,Country='US')
+            new Lead(Status='New',LastName='TestLast',FirstName='TestFirstName',Company='test company',Reassign__c=false,Country='US', State='IL')
         };
         insert leadList;
         
